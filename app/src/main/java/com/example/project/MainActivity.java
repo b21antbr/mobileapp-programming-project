@@ -10,17 +10,17 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 @SuppressWarnings("FieldCanBeLocal")
-public class MainActivity extends AppCompatActivity implements com.example.networking.JsonTask.JsonTaskListener {
+public class MainActivity extends AppCompatActivity implements JsonTask.JsonTaskListener {
     private ArrayList<GTowns> gTownList;
     private RecyclerView recyclerView;
     private final String JSON_URL = "https://mobprog.webug.se/json-api?login=b21antbr";
-    //private final String JSON_FILE = "mountains.json";
-    com.example.networking.recyclerAdapter adapter;
+    com.example.project.recyclerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +31,10 @@ public class MainActivity extends AppCompatActivity implements com.example.netwo
         recyclerView = findViewById(R.id.recyclerView);
         gTownList = new ArrayList<>();
         setAdapter();
-        new com.example.networking.JsonTask(this).execute(JSON_URL);
+        new JsonTask(this).execute(JSON_URL);
     }
     private void setAdapter(){
-        adapter = new com.example.networking.recyclerAdapter(gTownList);
+        adapter = new com.example.project.recyclerAdapter(gTownList);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -46,11 +46,11 @@ public class MainActivity extends AppCompatActivity implements com.example.netwo
         Log.d("MainActivity", json);
         Gson gson = new Gson();
         Type type = new TypeToken<ArrayList<GTowns>>() {}.getType();
-        ArrayList<Gtowns> listOfGTowns = gson.fromJson(json, type);
+        ArrayList<GTowns> listOfGTowns = gson.fromJson(json, type);
         gTownList.addAll(listOfGTowns);
         adapter.notifyDataSetChanged();
     }
 
 }
 
-}
+

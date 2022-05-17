@@ -1,4 +1,4 @@
-package com.example.networking;
+package com.example.project;
 
 public class GTowns {
     String name;
@@ -26,7 +26,6 @@ public class GTowns {
     public void setLocation(String location) {
         this.location = location;
     }
-
 
     public String getName() {
         return name;

@@ -1,4 +1,4 @@
-package com.example.networking;
+package com.example.project;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,7 +17,7 @@ class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.MyViewHolder>
     private ArrayList<GTowns> gTownList;
 
     public recyclerAdapter(ArrayList<GTowns> gTownList){
-        this.gTownList = mountainList;
+        this.gTownList = gTownList;
     }
     public class MyViewHolder extends RecyclerView.ViewHolder{
         public TextView gTownText;
@@ -40,7 +40,7 @@ class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.MyViewHolder>
         String name = gTownList.get(position).getName();
         String location = gTownList.get(position).getLocation();
         int size = gTownList.get(position).getSize();
-        holder.gTownText.setText("input for info");
+        holder.gTownText.setText("\nName: " + name + "\nLocation: " + location + "\nPopulation: " + size );
     }
 
     @Override
