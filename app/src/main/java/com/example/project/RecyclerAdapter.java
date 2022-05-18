@@ -39,8 +39,8 @@ class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.MyViewHolder>
     public void onBindViewHolder(@NonNull recyclerAdapter.MyViewHolder holder, int position) {
         String name = gTownList.get(position).getName();
         String location = gTownList.get(position).getLocation();
-        int size = gTownList.get(position).getSize();
-        holder.gTownText.setText("\nName: " + name + "\nLocation: " + location + "\nPopulation: " + size );
+        int population = gTownList.get(position).getPopulation();
+        holder.gTownText.setText("\nName: " + name + "\nLocation: " + location + "\nPopulation: " + population );
     }
 
     @Override
