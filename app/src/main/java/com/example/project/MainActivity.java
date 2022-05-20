@@ -46,11 +46,12 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_add:
+            case R.id.aboutButton:
                 Intent intent = new Intent(MainActivity.this, SecondActivity.class);
                 startActivity(intent);
                 return true;
             default:
+
                 return super.onOptionsItemSelected(item);
         }
     }
