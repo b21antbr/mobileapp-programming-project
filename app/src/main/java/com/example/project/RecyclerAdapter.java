@@ -1,15 +1,18 @@
 package com.example.project;
 
+import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.project.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -21,10 +24,11 @@ class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.MyViewHolder>
     }
     public class MyViewHolder extends RecyclerView.ViewHolder{
         public TextView gTownText;
-
+        public ImageView gTownImage;
 
         public MyViewHolder(final View view) {
             super(view);
+            gTownImage = view.findViewById(R.id.gTownImageView);
             gTownText = view.findViewById(R.id.gTownName);
         }
     }
@@ -40,7 +44,10 @@ class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.MyViewHolder>
         String name = gTownList.get(position).getName();
         String location = gTownList.get(position).getLocation();
         int population = gTownList.get(position).getPopulation();
-        holder.gTownText.setText("\nName: " + name + "\nLocation: " + location + "\nPopulation: " + population );
+        String image = gTownList.get(position).getAuxdata();
+        holder.gTownText.setText("\nName: " + name + "\nLocation: " + location + "\nPopulation: " + population);
+        Picasso.get().load(image).into(holder.gTownImage);
+
     }
 
     @Override

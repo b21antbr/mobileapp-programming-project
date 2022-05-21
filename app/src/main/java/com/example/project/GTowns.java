@@ -7,11 +7,13 @@ public class GTowns {
     String location;
     @SerializedName("size")
     int population;
+    String auxdata;
 
-    public GTowns(String name, String location, int population) {
+    public GTowns(String name, String location, int population, String auxdata) {
         this.name = name;
         this.location = location;
         this.population = population;
+        this.auxdata = auxdata;
     }
 
     public int getPopulation() {
@@ -26,4 +28,7 @@ public class GTowns {
         return name;
     }
 
+    public String getAuxdata() {
+        return auxdata;
+    }
 }
