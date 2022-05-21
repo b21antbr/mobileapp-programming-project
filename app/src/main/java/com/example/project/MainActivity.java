@@ -45,17 +45,15 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.aboutButton:
-                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-                startActivity(intent);
-                return true;
-            default:
+        int id = item.getItemId();
 
-                return super.onOptionsItemSelected(item);
+        if (id == R.id.aboutButton) {
+            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+            startActivity(intent);
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
-
     private void setAdapter(){
         adapter = new com.example.project.recyclerAdapter(gTownList);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
