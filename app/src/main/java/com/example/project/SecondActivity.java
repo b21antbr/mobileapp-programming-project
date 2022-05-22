@@ -12,7 +12,8 @@ public class SecondActivity extends AppCompatActivity {
         setContentView(R.layout.activity_second);
         Bundle extras = getIntent().getExtras();
         secondTextView = findViewById(R.id.secondTextView);
-        secondTextView.setText("about me");
+        secondTextView.setText("En app för att titta på fina öar i grekiska cycladerna. " +
+                "Från unga till gamla, leta semestermål eller se lite information om öarna.");
 
     }
 }
