@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.project.R;
 import com.squareup.picasso.Picasso;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.MyViewHolder> {
@@ -25,11 +27,12 @@ class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.MyViewHolder>
     public class MyViewHolder extends RecyclerView.ViewHolder{
         public TextView gTownText;
         public ImageView gTownImage;
-
+        public TextView gTownName;
         public MyViewHolder(final View view) {
             super(view);
             gTownImage = view.findViewById(R.id.gTownImageView);
             gTownText = view.findViewById(R.id.gTownName);
+            gTownName = view.findViewById(R.id.gTownNameBig);
         }
     }
     @NonNull
@@ -45,8 +48,10 @@ class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.MyViewHolder>
         String location = gTownList.get(position).getLocation();
         int population = gTownList.get(position).getPopulation();
         String image = gTownList.get(position).getAuxdata();
-        holder.gTownText.setText("\nName: " + name + "\nLocation: " + location + "\nPopulation: " + population);
         Picasso.get().load(image).into(holder.gTownImage);
+        holder.gTownName.setText(name);
+        holder.gTownText.setText("Location: " + location + "\nPopulation: " + population);
+
 
     }
 
