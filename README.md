@@ -1,42 +1,76 @@
 
 # Rapport
 
-**Skriv din rapport här!**
+Projekt arbetet handlade om att konstruera en app som tar emot json data för att konvertera till en
+typ av lista. Arbetet påbörjades med att skapa de nödvändiga klasser som krävdes vilket innefattar
+objekten från json, JsonTask, SecondActivity samt en RecyclerAdapter.
 
-_Du kan ta bort all text som finns sedan tidigare_.
+Objekten blev öar från grekland, där namn, bild, plats samt population ska kunna visas.
+Mestadels av koden är snarlik den tidigare recyclerviewen, men för att kunna importera bilder
+behövdes nya tekniker användas. Jag använde biblioteket picasso för detta.
 
-## Följande grundsyn gäller dugga-svar:
-
-- Ett kortfattat svar är att föredra. Svar som är längre än en sida text (skärmdumpar och programkod exkluderat) är onödigt långt.
-- Svaret skall ha minst en snutt programkod.
-- Svaret skall inkludera en kort övergripande förklarande text som redogör för vad respektive snutt programkod gör eller som svarar på annan teorifråga.
-- Svaret skall ha minst en skärmdump. Skärmdumpar skall illustrera exekvering av relevant programkod. Eventuell text i skärmdumpar måste vara läsbar.
-- I de fall detta efterfrågas, dela upp delar av ditt svar i för- och nackdelar. Dina för- respektive nackdelar skall vara i form av punktlistor med kortare stycken (3-4 meningar).
-
-Programkod ska se ut som exemplet nedan. Koden måste vara korrekt indenterad då den blir lättare att läsa vilket gör det lättare att hitta syntaktiska fel.
-
+build.gradle behöver då denna rad:
+```gradle
+implementation 'com.squareup.picasso:picasso:2.71828'
 ```
-function errorCallback(error) {
-    switch(error.code) {
-        case error.PERMISSION_DENIED:
-            // Geolocation API stöds inte, gör något
-            break;
-        case error.POSITION_UNAVAILABLE:
-            // Misslyckat positionsanrop, gör något
-            break;
-        case error.UNKNOWN_ERROR:
-            // Okänt fel, gör något
-            break;
+
+Importeringen av bilderna blir då smidiga och använder denna rad:
+```java
+Picasso.get().load(image).into(holder.islandImage);
+```
+
+Second activity fick en egen knapp i toolbaren med hjälp av en inflater samt en intent i main
+activity.
+```java
+public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
     }
-}
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.aboutButton) {
+            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 ```
 
-Bilder läggs i samma mapp som markdown-filen.
+Sedan har vi second activity som har koden:
+```java
+protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_second);
+        Bundle extras = getIntent().getExtras();
+        secondTextView = findViewById(R.id.secondTextView);
+        secondTextView.setText(R.string.about_text);
 
-![](android.png)
+    }
+```
 
-Läs gärna:
+Större delen av arbetet har gått åt designen då allt annat gick smidigt. Så rundade kanterna på
+korten inuti recyclerviewen med hjälp ut av en drawable fil.
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#404040"/>
+    <stroke android:width="8dp" android:color="#404040" />
+    <corners android:radius="30dp"/>
+    <padding android:left="0dp" android:top="0dp" android:right="0dp" android:bottom="0dp" />
+</shape>
+```
 
-- Boulos, M.N.K., Warren, J., Gong, J. & Yue, P. (2010) Web GIS in practice VIII: HTML5 and the canvas element for interactive online mapping. International journal of health geographics 9, 14. Shin, Y. &
-- Wunsche, B.C. (2013) A smartphone-based golf simulation exercise game for supporting arthritis patients. 2013 28th International Conference of Image and Vision Computing New Zealand (IVCNZ), IEEE, pp. 459–464.
-- Wohlin, C., Runeson, P., Höst, M., Ohlsson, M.C., Regnell, B., Wesslén, A. (2012) Experimentation in Software Engineering, Berlin, Heidelberg: Springer Berlin Heidelberg.
+Som båda textViewsen i list_items använder. Har även försökt designa appen med mörkare färger
+då det är något jag själv föredrar på mobilapplikationer.
+Jag hade ingen tanke på designen från starten av arbetet utan den byggdes utefter utvecklandet,
+därav har jag ingen skiss bland följande bilder.
+
+Första skärmen.
+![](Screenshot1.png)
+
+About skärmen.
+![](Screenshot2.png)

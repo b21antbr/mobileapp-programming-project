@@ -9,7 +9,7 @@
 
     <TextView
         android:textAlignment="center"
-        android:id="@+id/gTownNameBig"
+        android:id="@+id/islandName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/text_edges"
@@ -21,12 +21,12 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/gTownImageView"
+        android:id="@+id/islandImage"
         android:adjustViewBounds="true"
         />
 
     <TextView
-        android:id="@+id/gTownName"
+        android:id="@+id/islandText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/text_edges"

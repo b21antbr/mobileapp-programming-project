@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 @SuppressWarnings("FieldCanBeLocal")
 public class MainActivity extends AppCompatActivity implements JsonTask.JsonTaskListener {
-    private ArrayList<GTowns> gTownList;
+    private ArrayList<Islands> gTownList;
     private RecyclerView recyclerView;
     private final String JSON_URL = "https://mobprog.webug.se/json-api?login=b21antbr";
     com.example.project.recyclerAdapter adapter;
@@ -66,8 +66,8 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
     public void onPostExecute(String json) {
         Log.d("MainActivity", json);
         Gson gson = new Gson();
-        Type type = new TypeToken<ArrayList<GTowns>>() {}.getType();
-        ArrayList<GTowns> listOfGTowns = gson.fromJson(json, type);
+        Type type = new TypeToken<ArrayList<Islands>>() {}.getType();
+        ArrayList<Islands> listOfGTowns = gson.fromJson(json, type);
         gTownList.addAll(listOfGTowns);
         adapter.notifyDataSetChanged();
     }

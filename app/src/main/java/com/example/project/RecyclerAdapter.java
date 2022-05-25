@@ -1,7 +1,5 @@
 package com.example.project;
 
-import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,28 +9,25 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.project.R;
 import com.squareup.picasso.Picasso;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
 class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.MyViewHolder> {
-    private ArrayList<GTowns> gTownList;
+    private ArrayList<Islands> islandList;
 
-    public recyclerAdapter(ArrayList<GTowns> gTownList){
-        this.gTownList = gTownList;
+    public recyclerAdapter(ArrayList<Islands> gTownList){
+        this.islandList = gTownList;
     }
     public class MyViewHolder extends RecyclerView.ViewHolder{
-        public TextView gTownText;
-        public ImageView gTownImage;
-        public TextView gTownName;
+        public TextView islandText;
+        public ImageView islandImage;
+        public TextView islandName;
         public MyViewHolder(final View view) {
             super(view);
-            gTownImage = view.findViewById(R.id.gTownImageView);
-            gTownText = view.findViewById(R.id.gTownName);
-            gTownName = view.findViewById(R.id.gTownNameBig);
+            islandImage = view.findViewById(R.id.islandImage);
+            islandText = view.findViewById(R.id.islandText);
+            islandName = view.findViewById(R.id.islandName);
         }
     }
     @NonNull
@@ -44,24 +39,24 @@ class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.MyViewHolder>
 
     @Override
     public void onBindViewHolder(@NonNull recyclerAdapter.MyViewHolder holder, int position) {
-        String name = gTownList.get(position).getName();
-        String location = gTownList.get(position).getLocation();
-        int population = gTownList.get(position).getPopulation();
-        String image = gTownList.get(position).getAuxdata();
-        Picasso.get().load(image).into(holder.gTownImage);
-        holder.gTownName.setText(name);
-        holder.gTownText.setText("Location: " + location + "\nPopulation: " + population);
+        String name = islandList.get(position).getName();
+        String location = islandList.get(position).getLocation();
+        int population = islandList.get(position).getPopulation();
+        String image = islandList.get(position).getAuxdata();
+        Picasso.get().load(image).into(holder.islandImage);
+        holder.islandName.setText(name);
+        holder.islandText.setText("Location: " + location + "\nPopulation: " + population);
 
 
     }
 
     @Override
     public int getItemCount() {
-        return gTownList.size();
+        return islandList.size();
     }
 
-    public void addGTowns(ArrayList<GTowns> gTownList){
-        this.gTownList.addAll(gTownList);
+    public void addIsland(ArrayList<Islands> islandList){
+        this.islandList.addAll(islandList);
         notifyDataSetChanged();
     }
 }

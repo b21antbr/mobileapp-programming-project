@@ -12,10 +12,7 @@ public class SecondActivity extends AppCompatActivity {
         setContentView(R.layout.activity_second);
         Bundle extras = getIntent().getExtras();
         secondTextView = findViewById(R.id.secondTextView);
-        secondTextView.setText("En app för att titta på fina öar i grekiska cycladerna. " +
-                "Från unga till gamla, leta semestermål eller se lite information om öarna." +
-                "\n\nMöjligheter för att skala upp applikationen, exempelvis med mer omfattande information" +
-                " samt att utöka till alla grekiska ögrupper.");
+        secondTextView.setText(R.string.about_text);
 
     }
 }
