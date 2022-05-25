@@ -69,8 +69,8 @@ då det är något jag själv föredrar på mobilapplikationer.
 Jag hade ingen tanke på designen från starten av arbetet utan den byggdes utefter utvecklandet,
 därav har jag ingen skiss bland följande bilder.
 
-# Första skärmen.
+## Första skärmen.
 ![](Screenshot1.png)
 
-# About skärmen.
+## About skärmen.
 ![](Screenshot2.png)
